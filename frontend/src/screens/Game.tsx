@@ -64,6 +64,7 @@
 //   );
 // };
 
+import { useEffect } from "react";
 import { Button } from "../components/Button";
 import { ChessBoard } from "../components/ChessBoard";
 import { useSocket } from "../hooks/useSocket";
@@ -74,6 +75,28 @@ export const GAME_OVER = "game_over";
 
 export const Game = () => {
   const socket = useSocket();
+
+  useEffect (() => {
+    if (!socket) {
+      return;
+    }
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      console.log(message)
+      switch (message.type) {
+        case INIT_GAME:
+          console.log("Game Initialized");
+          break;
+          case MOVE:
+            console.log("Move made");
+            break;
+            case GAME_OVER:
+              console.log("Game over"):
+              break;
+      }
+    }
+  }, [socket]);
+
   if (!socket) return <div>Connecting...</div>
 
   return (
