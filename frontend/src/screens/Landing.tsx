@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
+
 export const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
@@ -30,18 +34,19 @@ export const Landing = () => {
           </div>
 
           {/* Play Online Button */}
-          <button className="flex items-center space-x-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded shadow-md">
-            {/* <img src="/play-icon.png" alt="Play Icon" className="w-6 h-6" /> */}
-            <div>
-              <p className="text-xl">Play Online</p>
-              <p className="text-sm font-normal">
-                Play with someone at your level
-              </p>
-            </div>
-          </button>
+          <Button onClick={() => {
+              navigate("/game");
+            }}
+          > play Online
+          </Button>
 
           {/* Play Computer Button */}
-          <button className="flex items-center space-x-3 bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded shadow-md">
+          <button
+            onClick={() => {
+              navigate("/game");
+            }}
+            className="flex items-center space-x-3 bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded shadow-md"
+          >
             {/* <img src="/computer-icon.png" alt="Computer Icon" className="w-6 h-6" /> */}
             <div>
               <p className="text-xl">Play Computer</p>
