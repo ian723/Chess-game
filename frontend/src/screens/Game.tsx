@@ -91,7 +91,7 @@ export const Game = () => {
             console.log("Move made");
             break;
             case GAME_OVER:
-              console.log("Game over"):
+              console.log("Game over");
               break;
       }
     }
