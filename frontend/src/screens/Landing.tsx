@@ -34,10 +34,13 @@ export const Landing = () => {
           </div>
 
           {/* Play Online Button */}
-          <Button onClick={() => {
+          <Button
+            onClick={() => {
               navigate("/game");
             }}
-          > play Online
+          >
+            {" "}
+            play Online
           </Button>
 
           {/* Play Computer Button */}
@@ -60,4 +63,3 @@ export const Landing = () => {
     </div>
   );
 };
-
