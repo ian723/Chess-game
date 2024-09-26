@@ -46,9 +46,9 @@ export const Game = () => {
       <div className="pt-8 max-w-screen-lg w-full">
         <div className="grid grid-cols-6 gap-4 w-full">
           <div className="col-span-4 flex justify-center">
-            <ChessBoard board={board} />
+            <ChessBoard socket={socket} board={board} />
           </div>
-          <div className="col-span-2 bg-slate-950-200 w-full flex justify-center">
+          <div className="col-span-2 bg-slate-950 w-full flex justify-center">
             <div className="pt-8">
               <Button
                 onClick={() => {
