@@ -26,17 +26,17 @@ export const ChessBoard = ({
                   if (!from) {
                     setFrom(square?.square ?? null);
                   } else {
-                    setTo(square?.square ?? null);
                     socket.send(JSON.stringify({
                       type: MOVE,
                       payload: {
-                        from:
-                        to
+                        from,
+                        to: square?.square 
                       }
                     }))
+                    setFrom(null)
                     console.log({
                       from,
-                      to
+                      to: square?.square
                     })
                   }  
                  }} key={j}
