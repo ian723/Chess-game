@@ -3,7 +3,8 @@ import { useState } from "react";
 import { MOVE } from "../screens/Game";
 
 export const ChessBoard = ({
-  board, socket
+  board,
+  socket,
 }: {
   board: ({
     square: Square;
@@ -22,32 +23,35 @@ export const ChessBoard = ({
             {row.map((square, j) => {
               return (
                 <div
-                 onClick={() => {
-                  if (!from) {
-                    setFrom(square?.square ?? null);
-                  } else {
-                    socket.send(JSON.stringify({
-                      type: MOVE,
-                      payload: {
+                  onClick={() => {
+                    if (!from) {
+                      setFrom(square?.square ?? null);
+                    } else {
+                      socket.send(
+                        JSON.stringify({
+                          type: MOVE,
+                          payload: {
+                            from,
+                            to: square?.square,
+                          },
+                        })
+                      );
+                      setFrom(null);
+                      console.log({
                         from,
-                        to: square?.square 
-                      }
-                    }))
-                    setFrom(null)
-                    console.log({
-                      from,
-                      to: square?.square
-                    })
-                  }  
-                 }} key={j}
+                        to: square?.square,
+                      });
+                    }
+                  }}
+                  key={j}
                   className={`w-16 h-16 ${
                     (i + j) % 2 === 0 ? "bg-green-500" : "bg-white"
                   }`}
                 >
-                    <div className="w-full justify-center flex h-full">
-                        <div className="h-full justify-center flex flex-col">
-                  {square ? square.type : ""}
-                  </div>
+                  <div className="w-full justify-center flex h-full">
+                    <div className="h-full justify-center flex flex-col">
+                      {square ? square.type : ""}
+                    </div>
                   </div>
                 </div>
               );
